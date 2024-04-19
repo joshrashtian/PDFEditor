@@ -1,7 +1,19 @@
-import requests;
+import requests
 import os;
+
+def checkFile(filelink: str):
+        last = filelink.split('.')
+        if last[len(last)-1] != 'pdf':
+            print(f'not a pdf file {len(last)-1}')
+            return False
+        else:
+            return True
+    
 def fetchPDFfile(filename: str, name: str) -> bool:
     request = requests.get(filename)
+    if checkFile(filename) == False:
+        print(f'ERROR / {filename} is not a valid PDF File')
+        return False
     if request.status_code == 200:
         path = os.path.join(os.getcwd(), filename)
         with open(f'{name}.pdf', 'wb') as pdf_object:
@@ -13,6 +25,7 @@ def fetchPDFfile(filename: str, name: str) -> bool:
         return False
 
 if __name__ == '__main__':
-    FileName: str = 'people'
+    print('Name of PDF: *NOT INCLUDING .pdf*')
+    FileName: str = input()
     URL: str = 'https://ontheline.trincoll.edu/images/bookdown/sample-local-pdf.pdf'
     fetchPDFfile(URL, FileName)
