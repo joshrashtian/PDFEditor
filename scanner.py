@@ -27,5 +27,8 @@ def fetchPDFfile(filename: str, name: str) -> bool:
 if __name__ == '__main__':
     print('Name of PDF: *NOT INCLUDING .pdf*')
     FileName: str = input()
-    URL: str = 'https://ontheline.trincoll.edu/images/bookdown/sample-local-pdf.pdf'
+    URL: str = None
+    if(URL == None or len(URL) == 0):
+        print('Paste Link:')
+        URL = input()
     fetchPDFfile(URL, FileName)
