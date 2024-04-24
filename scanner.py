@@ -1,5 +1,5 @@
 import requests
-import os;
+import os
 
 def checkFile(filelink: str):
         last = filelink.split('.')
@@ -25,7 +25,7 @@ def fetchPDFfile(filename: str, name: str) -> bool:
         return False
 
 if __name__ == '__main__':
-    print('Name of PDF: *NOT INCLUDING .pdf*')
+    print('Name of PDF:')
     FileName: str = input()
     URL: str = None
     if(URL == None or len(URL) == 0):
